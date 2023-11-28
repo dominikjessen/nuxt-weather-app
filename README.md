@@ -1,75 +1,30 @@
-# Nuxt 3 Minimal Starter
+# Vue/Nuxt Weather App
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A very simple app to get the weather using openmeteo's API built with Vue 3 and Nuxt 3, deployed using Vercel.
 
-## Setup
+[Check out the live app here](https://nuxt-weather-app-zeta.vercel.app/)
 
-Make sure to install the dependencies:
+## Other implementations
 
-```bash
-# npm
-npm install
+- [React (Remix)](https://github.com/dominikjessen/remix-weather-app)
+- [Sveltekit](https://github.com/dominikjessen/svelte-weather-app)
 
-# pnpm
-pnpm install
+## About this app
 
-# yarn
-yarn install
+This small weather app is part of a series of apps I've built to explore Remix, Nuxt, and Svelte. I mainly build projects using NextJS normally, so out of curiosity I wanted to see how these other frameworks handle things. The remaining parts of the app like weather data API and designs are the same across all of them. This one specifically is built using Vue 3 and Nuxt 3.
 
-# bun
-bun install
-```
+## Things I like about Vue/Nuxt at first glance
 
-## Development Server
+One thing that I like about Vue/Nuxt is the way it handles component setup (I'm using the script setup syntax because I find that a lot nicer than the verbose setup() function). It creates relatively clear encapsulation and makes it easy to compose apps.
 
-Start the development server on `http://localhost:3000`:
+I'm relatively neutral on Vue's reactivity system. It's not quite as cool as Svelte, but marking a variable as a ref is simple enough. What makes me neutral on it is the fact that you have to make sure to change the ref's value, not the value itself due to Vue's proxy nature. With TS this is pretty much a non-issue, but I still don't really like having .value everywhere in my code (which is also why I rarely use useRef in React). Seems like a matter of personal taste though.
 
-```bash
-# npm
-npm run dev
+I personally think Vue's custom directives (v-if, v-for etc.) make for a very pretty HTML template for components. However, my personal taste is that I enjoy what Svelte and React do a lot more because it makes it very clear where I'm 'stepping out of basic HTML'.
 
-# pnpm
-pnpm run dev
+I think one of Nuxt's biggest pros - maybe different in a larger app - is that there don't seem to be too many setup files and folders. The file structure of this app is a lot neater than both the Svelte and Remix one.
 
-# yarn
-yarn dev
+## Things I dislike about Vue/Nuxt at first glance
 
-# bun
-bun run dev
-```
+I think the main downside for Vue/Nuxt for me is that there's a lot of "framework-y" stuff versus more JavaScript-y stuff in React and Svelte. Things like watchers, emits and defineProps mean you'll have to know Vue. For React and Svelte it feels a lot more like you simply have to know JS (well).
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+As I mentioned already, having .value everywhere and not having the visual distinction between HTML and framework/JS stuff is a personal distaste. It reminded me a bit of the old AngularJS ways, which is fine but I prefer React/Svelte here.
