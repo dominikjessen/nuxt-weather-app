@@ -32,8 +32,7 @@ if (locationQuery) {
 
     <CurrentForecast v-if="forecast?.current && forecast.current_units" :data="forecast.current"
       :units="forecast.current_units" />
-
-    <span v-if="forecast?.daily">Tomorrow's Forecast temp: {{ forecast.daily.temperature_2m_max[1] }} C</span>
+    <DailyForecast v-if="forecast?.daily" :data="forecast.daily" />
 
   </div>
 </template>
