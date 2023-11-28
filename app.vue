@@ -30,7 +30,9 @@ if (locationQuery) {
     <div v-if="location">Weather <span>{{ location === 'Your City' ? 'at' : 'in' }}</span> {{ location }}</div>
     <button @click="$event => location = 'Your City'">Change location</button>
 
-    <span v-if="forecast?.current">Current Forecast temp: {{ forecast.current?.temperature_2m }} C</span>
+    <CurrentForecast v-if="forecast?.current && forecast.current_units" :data="forecast.current"
+      :units="forecast.current_units" />
+
     <span v-if="forecast?.daily">Tomorrow's Forecast temp: {{ forecast.daily.temperature_2m_max[1] }} C</span>
 
   </div>
