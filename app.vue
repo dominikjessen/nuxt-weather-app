@@ -22,11 +22,10 @@ if (locationQuery) {
 } else {
   forecast.value = null
 }
-
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col gap-4 items-center">
 
     <div v-if="location">Weather <span>{{ location === 'Your City' ? 'at' : 'in' }}</span> {{ location }}</div>
     <button @click="$event => location = 'Your City'">Change location</button>
