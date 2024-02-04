@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { WeatherForecast } from './types/weather';
 
+const isLoading = ref(false)
 const location = ref('')
 const forecast = ref<WeatherForecast | null>()
 
@@ -27,6 +28,11 @@ watch(route, async () => {
   }
 })
 
+function locationChanged(newLocation: string) {
+  location.value = newLocation;
+  isLoading.value = false;
+}
+
 useHead({
   title: 'Nuxt Weather App',
   meta: [
@@ -39,8 +45,10 @@ useHead({
 </script>
 
 <template>
+  <LoadingOverlay v-if="isLoading" />
   <div class="flex flex-col gap-4 lg:gap-8 items-center justify-center w-11/12 md:w-4/5 mx-auto py-4">
-    <Search @location-changed="(newLocation: string) => location = newLocation" />
+    <h1 class="text-2xl font-bold">Check the weather in...</h1>
+    <Search @location-changed="locationChanged" @start-transition="isLoading = true" />
     <h2 v-if="location" class="font-bold text-xl md:text-2xl">
       <span>Weather</span><span>{{ location === 'Your Location' ? ' at ' : ' in ' }}</span><span>{{ location }}</span>
     </h2>

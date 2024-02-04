@@ -2,7 +2,7 @@
 import type { SearchResult } from '~/types/weather';
 import { SearchIcon } from 'lucide-vue-next'
 
-const emit = defineEmits(['locationChanged'])
+const emit = defineEmits(['locationChanged', 'startTransition'])
 
 let searchValue = ref('');
 let searchOptionsOpen = ref(false);
@@ -68,6 +68,7 @@ function geoLocateUser() {
   if (!navigator.geolocation) {
     alert('Geolocation not supported by your browser');
   } else {
+    emit('startTransition')
     navigator.geolocation.getCurrentPosition(success, error);
   }
 }
